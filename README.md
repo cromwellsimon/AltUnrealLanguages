@@ -50,39 +50,66 @@ Yes, there are.
 # Goal
 I am going to try out different programming languages in Unreal Engine and evaluate the pros and cons to using them.
 The goal is to find the best alternative language to use for Unreal Engine while waiting out for Unreal Verse to be added as an official option in Unreal Engine 6.
+The options here are ordered by language and ranked by viability for run-time programming.
 
 ## C++
 
 ## Blueprint
 
-## Python
+## AngelScript
+### [AngelScript](https://angelscript.hazelight.se/)
+Requires using a fork of Unreal Engine, which makes using plugins potentially more difficult.
+Doesn't support interfaces.
+Has access to all of Unreal Engine's reflection suite.
 
 ## [SkookumScript](https://skookumscript.com/unreal/)
 Was originally a very well-maintained alternative scripting language which ended up getting bought by Epic Games and became Verse
 
 ## [Verse](https://en.wikipedia.org/wiki/Verse_(programming_language))
 
-## [AngelScript](https://angelscript.hazelight.se/)
+## Python
+### [UnrealEnginePython](https://github.com/20tab/UnrealEnginePython)
+This project hasn't been updated since 2020-04-17.
+Unfortunately, the project was abandoned because Epic Games made their own implementation of Python for Unreal Engine.
+The nifty part about this project was that it was able to be used at runtime
 
-## [UnrealSharp (.NET 9+)](https://www.unrealsharp.com/)
+### Python (Official)
+Unfortunately, this is editor only. Runtime builds completely strip all the Python out of it.
+Maybe it'd be possible to create a fork of the Unreal Engine source code which doesn't strip this out?
+Regardless, this is particularly useful for making editor tools and doing editor automation.
 
-## [UnrealCLR (.NET 6)](https://github.com/nxrighthere/UnrealCLR)
+### [Nitro Python Runtime (Python)](https://www.fab.com/listings/fb18f1b0-3977-4cd7-b24e-ae7f8355e559)
+Only for calling Python scripts. Can push and pull variable names + values from/to the executed script but cannot directly access UE5 internals
+
+### [Yothon (Python)](https://www.yobiminds.com/yothon.html) and https://www.fab.com/listings/8d83689b-941a-49d9-ae22-f982d2d7e498
+> Please note that, at this stage, Python scripts cannot directly access UE5 internals, e.g. UObjects.
+
+As a result, this doesn't seem too different from just executing a Python command and dynamically passing in or pulling those values as a JSON 
+
+## .NET
+### [UnrealSharp (.NET 9+)](https://www.unrealsharp.com/)
+
+### [UnrealCLR (.NET 6)](https://github.com/nxrighthere/UnrealCLR)
 This project hasn't been updated since 2023-06-07
 
-## [MonoUE](https://mono-ue.github.io/#:~:text=Mono%20for%20Unreal%20Engine%20is%20a%20plugin%20for,generated%20automatically%20for%20all%20Blueprint-accessible%20types%20and%20members.)
+### [MonoUE](https://mono-ue.github.io/#:~:text=Mono%20for%20Unreal%20Engine%20is%20a%20plugin%20for,generated%20automatically%20for%20all%20Blueprint-accessible%20types%20and%20members.)
 This project hasn't been updated since 2019-06-11
 
-## [Unreal.js (TypeScript/JavaScript)](https://github.com/ncsoft/Unreal.js/)
+## JavaScript/TypeScript
+### [Unreal.js (TypeScript/JavaScript)](https://github.com/ncsoft/Unreal.js/)
 
-## [Puerts (TypeScript/JavaScript)](https://github.com/Tencent/puerts)
+### [Puerts (TypeScript/JavaScript)](https://github.com/Tencent/puerts)
 
-## [UnLua (Lua)](https://github.com/Tencent/UnLua)
+## Lua
+### [UnLua (Lua)](https://github.com/Tencent/UnLua)
 
-## [unreal-rust](https://github.com/MaikKlein/unreal-rust?tab=readme-ov-file)
+## Rust
+### [unreal-rust](https://github.com/MaikKlein/unreal-rust?tab=readme-ov-file)
 This project hasn't been updated since 2022-10-02
 
-## [Unreal.hx](https://github.com/proletariatgames/unreal.hx)
+## Haxe
+### [Unreal.hx](https://github.com/proletariatgames/unreal.hx)
 This project hasn't been updated since 2023-01-10
 
-## [Haxe-UnrealEngine](https://github.com/SomeRanDev/Haxe-UnrealEngine5)
+### [Haxe-UnrealEngine](https://github.com/SomeRanDev/Haxe-UnrealEngine5)
 This project hasn't been updated since 2023-04-18
