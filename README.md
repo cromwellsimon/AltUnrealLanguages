@@ -103,6 +103,11 @@ This project hasn't been updated since 2019-06-11
 ## Lua
 ### [UnLua (Lua)](https://github.com/Tencent/UnLua)
 
+### [slua-unreal](https://github.com/Tencent/sluaunreal)
+This is also by Tencent. Not quite sure what the difference is between this and UnLua but PUBG Mobile uses this
+
+### [LuaMachine](https://github.com/rdeioris/LuaMachine)
+
 ## Rust
 ### [unreal-rust](https://github.com/MaikKlein/unreal-rust?tab=readme-ov-file)
 This project hasn't been updated since 2022-10-02
