@@ -1,6 +1,6 @@
 # Background
 I used to love Blueprint, and it still holds a special place in my heart.
-It was the first true programming language that I have learned, and it was the gateway drug for me to get into C# with Unity, which still is my most favorite programming language.
+It was the first true programming language that I learned, and it was the gateway drug for me to get into C# with Unity, which is still my most favorite programming language.
 
 However, as I have grown as a developer and have branched out deeper into game and even web development, I always come back to Blueprint with mixed emotions.
 While Blueprint is highly accessible, it also holds the engine itself back in several ways.
@@ -22,7 +22,7 @@ But the biggest problem that I face with using Blueprint nowadays is because I p
 I have an Asus ProArt P16 with a high-resolution touchscreen. You might think that using a touchscreen would be great for Blueprints because of how graphical it is.
 In reality, it's the exact opposite. Using a touchscreen with Blueprint is a nightmare and it is practically unusable.
 Whenever you drag on an empty space, it doesn't drag the graph around; it creates a highlight box.
-You can't pull any pins off of nodes. You can't even drag any nodes around. The buttons on the screen hardly work when pressing them with a touchscreen.
+You can't pull any pins off of nodes. You can't even drag any nodes around. Clicking on anything on the screen rarely registers as a proper click.
 I imagine that using Blueprint is far better whenever using a drawing tablet because it typically maps to mouse movements, and tapping the pen usually maps to a left-mouse click.
 Tapping a touchscreen does NOT map to a left-mouse click; it maps to a touch, which Unreal Engine hardly supports.
 
@@ -53,14 +53,45 @@ The goal is to find the best alternative language to use for Unreal Engine while
 The options here are ordered by language and ranked by viability for run-time programming.
 
 ## C++
+> One of the key moments in Unreal Engine 4's development was,
+> we had a series of debates about UnrealScript – the scripting language I'd built that we'd carried through three generations.
+> And what we needed to do to make it competitive in the future. And we kept going through bigger and bigger feature lists of what we needed to do to upgrade it,
+> and who could possibly do the work, and it was getting really, really unwieldy.
+> And there was this massive meeting to try and sort it out, and try to cut things and decide what to keep,
+> and plan and...there was this point where I looked at that and said 'you know, everything you're proposing to add to UnrealScript is already in C++.
+> Why don't we just kill UnrealScript and move to pure C++? You know, maximum performance and maximum debuggability. It gives us all these advantages.'
+> - Tim Sweeney
+
+- Fast runtime performance
+- Very slow compile times
+- Allows for integration with any C++ library given you can make a wrapper around it that plays nicely with Unreal Engine
+- Template params do not work with Unreal Engine's reflection system
+- Unreal Engine is very particular about its reflection macros and will throw oftentimes unintelligible errors whenever a reflection macro isn't applied correctly
+- Hot-reload only really works consistently whenever updating function logic; attempting to update signatures of any kind often will require a restart to work as expected
 
 ## Blueprint
+Whenever Epic Games transitioned from Unreal Engine 3 to Unreal Engine 4, they opted to drop their custom scripting language, Unreal Script,
+in favor of going all-in on their visual scripting language, Kismet (which was renamed to Blueprint) coupled with C++.
+With that, if you ever see a "K" prefix in front of anything in C++, it is likely a prefix for "Kismet." For example, K2_Nodes; "K2" means Kismet 2.x
+- Beginner-friendly; great gateway drug into learning other languages
+- Can be simpler to follow the flow for
+- Very tight integration with the editor. Gives you type-safety for editor-time things not exposed to C++ like objects contained in a level
+- Simple support for Generics/Templates through Macros or custom K2_Nodes, but nothing further than that
+- No native `any` or `void*` type, but it's pretty straightforward to make a thin wrapper around `FVariant`, `FInstancedStruct`, and `TVariant` in C++ to do the same. 
+See something like [AnyValue](https://www.fab.com/listings/242b2e28-db6b-4e69-9744-067b4e171a0f) for that as a plugin,
+or I'll likely put up a throwaway GitHub of my own version that I made for it.
+But, I chose against this approach for making my plugin because constantly needing to cast to-and-from was getting to make for a terrible developer experience
+- Functions are NOT first-class citizens
+- Blueprints are completely stored in binary, which makes diffing for merging or reviewing code extremely difficult
+- Slow runtime performance
+- Fast compile times
+- Compilations work consistently; no need to restart for any signature changes
 
 ## AngelScript
 ### [AngelScript](https://angelscript.hazelight.se/)
-Requires using a fork of Unreal Engine, which makes using plugins potentially more difficult.
-Doesn't support interfaces.
-Has access to all of Unreal Engine's reflection suite.
+- Requires using a fork of Unreal Engine, which makes using plugins potentially more difficult
+- Doesn't support interfaces
+- Has access to all of Unreal Engine's reflection suite
 
 ## [SkookumScript](https://skookumscript.com/unreal/)
 Was originally a very well-maintained alternative scripting language which ended up getting bought by Epic Games and became Verse
